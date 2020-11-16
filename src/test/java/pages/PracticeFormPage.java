@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import users.User;
 
@@ -7,10 +8,10 @@ import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import static com.codeborne.selenide.Condition.textCaseSensitive;
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PracticeFormPage {
     User user;
@@ -87,12 +88,12 @@ public class PracticeFormPage {
 
     public void checkSubmitForm() {
         for (Map.Entry<String, String> entry: getTableRows().entrySet()) {
-            assertEquals(checkSubmitTableRow(entry.getKey()), entry.getValue());
+            checkSubmitTableRow(entry.getKey()).shouldHave(textCaseSensitive(entry.getValue()));
         }
     }
 
-    private String checkSubmitTableRow(String rowName) {
-        return $x("//td[text()='" + rowName + "']").sibling(0).getText();
+    private SelenideElement checkSubmitTableRow(String rowName) {
+        return $x("//td[text()='" + rowName + "']").sibling(0);
     }
 
     private Map<String, String> getTableRows() {
