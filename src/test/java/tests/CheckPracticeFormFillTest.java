@@ -29,7 +29,6 @@ public class CheckPracticeFormFillTest {
         practiceFormPage.selectCity();
         practiceFormPage.clickSubmitButton();
 
-        //Assert
         practiceFormPage.checkSubmitForm();
     }
 }

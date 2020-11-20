@@ -1,7 +1,6 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 import users.User;
 
 import java.io.File;
@@ -9,7 +8,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static com.codeborne.selenide.Condition.textCaseSensitive;
-import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -25,19 +23,19 @@ public class PracticeFormPage {
     }
 
     public void fillFirstName() {
-        $(By.id("firstName")).val(user.getFirstName());
+        $(("#firstName")).val(user.getFirstName());
     }
 
     public void fillLastName() {
-        $(By.id("lastName")).val(user.getLastName());
+        $(("#lastName")).val(user.getLastName());
     }
 
     public void fillEmail() {
-        $(By.id("userEmail")).val(user.getEmail());
+        $(("#userEmail")).val(user.getEmail());
     }
 
     public void fillMobileNumber() {
-        $(By.id("userNumber")).val(user.getMobileNumber());
+        $(("#userNumber")).val(user.getMobileNumber());
     }
 
     public void selectGender() {
@@ -45,7 +43,7 @@ public class PracticeFormPage {
     }
 
     public void selectDateOfBirth() {
-        $(byId("dateOfBirthInput")).click();
+        $(("#dateOfBirthInput")).click();
         $(".react-datepicker__year-select").selectOption(user.getYearOfBirth());
         $(".react-datepicker__month-select").selectOption(user.getMonthOfBirth());
         if (Integer.parseInt(user.getDayOFBirth()) < 10) {
@@ -56,7 +54,7 @@ public class PracticeFormPage {
     }
 
     public void selectSubject() {
-        $(By.id("subjectsInput")).val(user.getSubjectName().substring(0, 1));
+        $(("#subjectsInput")).val(user.getSubjectName().substring(0, 1));
         $(byText(user.getSubjectName())).click();
     }
 
@@ -65,11 +63,11 @@ public class PracticeFormPage {
     }
 
     public void uploadPhoto() {
-        $(byId("uploadPicture")).uploadFile(new File("src/test/resources/" + user.getPhotoFileName()));
+        $(("#uploadPicture")).uploadFile(new File("src/test/resources/" + user.getPhotoFileName()));
     }
 
     public void fillCurrentAddress() {
-        $(byId("currentAddress")).val(user.getAddress());
+        $(("#currentAddress")).val(user.getAddress());
     }
 
     public void selectState() {
@@ -83,7 +81,7 @@ public class PracticeFormPage {
     }
 
     public void clickSubmitButton() {
-        $(byId("submit")).click();
+        $(("#submit")).click();
     }
 
     public void checkSubmitForm() {

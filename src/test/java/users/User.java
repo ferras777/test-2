@@ -2,7 +2,7 @@ package users;
 
 public class User {
 
-    private static int countOfUsers = 1;
+    private static int countOfUsers = 0;
 
     private final int id;
     private final String firstName;
@@ -22,6 +22,7 @@ public class User {
     public User(String firstName, String lastName, String email, String mobileNumber, String gender,
                 String subjectName, String hobby, String address, String state, String city, String day, String month,
                 String year) {
+        countOfUsers++;
         this.id = countOfUsers;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -36,7 +37,6 @@ public class User {
         this.dayOFBirth = day;
         this.monthOfBirth = month;
         this.yearOfBirth = year;
-        countOfUsers++;
     }
 
     public String getPhotoFileName() {
