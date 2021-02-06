@@ -22,7 +22,9 @@ public abstract class TestBase {
         capabilities.setCapability("enableVideo", true);
 
         Configuration.browserCapabilities = capabilities;
-        Configuration.remote = "https://user1:1234@" + System.getProperty("remote.browser.url") + ":4444/wd/hub/";
+        Configuration.browserVersion = "87.0";
+        Configuration.browserSize="1920x1080";
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud:4444/wd/hub/";
         Configuration.startMaximized = true;
     }
 
